@@ -1,0 +1,10 @@
+<p>Solo un test</p>
+
+El valor del Dólar observado el día de hoy es: 798.98 
+
+El valor del Euro el día de hoy es: 908.04 
+
+El valor del Unidad de fomento (UF) el día de hoy es: 31405.12 
+
+El valor del Unidad Tributaria Mensual (UTM) el día de hoy es: 54878 
+

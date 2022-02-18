@@ -9,19 +9,19 @@ import fs from 'fs';
 app.get('/mailing', async (req, res) => {
   let contenidoEmail = '';
   const { correos, asunto, contenido } = req.query;
-  contenidoEmail += contenido + '<br>';
+  contenidoEmail += contenido + '\n\n';
   const indicadores = await (await axios.get(`https://mindicador.cl/api`)).data;
   const indiParaEnviar = ['dolar', 'euro', 'uf', 'utm'];
   indiParaEnviar.forEach((indicador) => {
-    contenidoEmail += `El valor del ${indicadores[indicador].nombre} el día de hoy es: ${indicadores[indicador].valor} <br>`;
+    contenidoEmail += `El valor del ${indicadores[indicador].nombre} el día de hoy es: ${indicadores[indicador].valor} \n\n`;
   });
   enviarEmail(correos, asunto, contenidoEmail);
 
-  fs.writeFile(`correos/${uuidv4()}.txt`, contenidoEmail, 'utf8', () => {
+  fs.writeFile(`./correos/${uuidv4()}.txt`, contenidoEmail, 'utf8', () => {
     console.log('Email guardado');
   });
 
-  res.send('Email enviado!!');
+  res.redirect('/');
 });
 
 app.listen(3000, () => console.log('Servidor corriendo en puerto 3000'));
